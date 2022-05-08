@@ -54,6 +54,18 @@ class Keyboard {
     });
   }
 
+  CheckOnChangeLanguage() {
+    if (this.alt && this.control) {
+      this.SwithLang();
+      this.DisableAltAndCtrl();
+    }
+  }
+
+  DisableAltAndCtrl() {
+    this.alt = false;
+    this.control = false;
+  }
+
   SetupEventListeners() {
     this.buttons.map((key) => {
       key.block.addEventListener('buttonpressed', () => {
@@ -73,15 +85,27 @@ class Keyboard {
             key.buttonCode === 'ShiftLeft' || key.buttonCode === 'ShiftRight'
           ) {
             this.EnableShift();
+            this.DisableAltAndCtrl();
           }
           if (key.buttonCode === 'ChangeLanguage') {
             this.SwithLang();
+            this.DisableAltAndCtrl();
           }
           if (key.buttonCode === 'CapsLock') {
             this.SwithShift();
+            this.DisableAltAndCtrl();
+          }
+          if (key.buttonCode === 'AltLeft') {
+            this.alt = true;
+            this.CheckOnChangeLanguage();
+          }
+          if (key.buttonCode === 'ControlLeft') {
+            this.control = true;
+            this.CheckOnChangeLanguage();
           }
         } else {
           this.area.value += key.symbol;
+          this.DisableAltAndCtrl();
         }
       });
       key.block.addEventListener('mousedown', () => {
