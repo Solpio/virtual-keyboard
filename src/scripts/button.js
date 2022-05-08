@@ -36,13 +36,16 @@ class Button {
       if (code === 'Backspace') {
         block.classList.add('keyboard__button--backspace');
       }
+      if (code === 'Nothing') {
+        block.classList.add('keyboard__button--hidden');
+        block.disabled = true;
+      }
       return block;
     }
     this.block = createButtonBlock(this.buttonCode);
-    this.CreateEvent  ();
+    this.CreateEvent();
     this.SetSymbol(lang, shift);
     this.AppendSymbol();
-    // this.SetEventListener();
     return this.block;
   }
 

@@ -11,6 +11,7 @@ class Keyboard {
     } else {
       this.lang = 'ru';
     }
+    this.UpdateButtons();
   }
 
   SwithShift() {
@@ -19,10 +20,34 @@ class Keyboard {
     } else {
       this.shift = true;
     }
+    this.UpdateButtons();
+  }
+
+  EnableShift() {
+    if (!this.shift) {
+      this.shift = true;
+    }
+    this.UpdateButtons();
+  }
+
+  DisableShift() {
+    if (this.shift) {
+      this.shift = false;
+    }
+    this.UpdateButtons();
   }
 
   SetupButtons(buttons) {
     this.buttons = buttons;
+  }
+
+  UpdateButtons() {
+    console.log(this.shift);
+    this.buttons.map((btn) => {
+      btn.SetSymbol(this.lang, this.shift);
+      btn.UpdateSymbol();
+      return 0;
+    });
   }
 
   SetupEventListeners() {
@@ -41,6 +66,17 @@ class Keyboard {
           if (key.buttonCode === 'Enter') {
             this.area.value += '\n';
           }
+          if (
+            key.buttonCode === 'ShiftLeft' || key.buttonCode === 'ShiftRight'
+          ) {
+            this.EnableShift();
+          }
+          if (key.buttonCode === 'ChangeLanguage') {
+            this.SwithLang();
+          }
+          if (key.buttonCode === 'CapsLock') {
+            this.SwithShift();
+          }
         } else {
           this.area.value += key.symbol;
           console.log(key);
@@ -51,6 +87,9 @@ class Keyboard {
       });
       key.block.addEventListener('mouseup', () => {
         key.block.classList.remove('keyboard__button--active');
+        if (key.buttonCode !== 'ShiftLeft' && key.buttonCode !== 'ShiftRight' && key.buttonCode !== 'CapsLock') {
+          this.DisableShift();
+        }
       });
       return 0;
     });
@@ -71,6 +110,11 @@ class Keyboard {
       this.buttons.map((button) => {
         if (button.buttonCode === e.code) {
           button.EndEvent();
+          if (
+            button.buttonCode === 'ShiftLeft' || button.buttonCode === 'ShiftRight'
+          ) {
+            this.DisableShift();
+          }
           return console.log(e.code);
         }
         return 0;

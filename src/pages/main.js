@@ -1,5 +1,6 @@
 import CreateBlock from '../scripts/createblock';
 import createData from '../scripts/createBundle';
+import Keyboard from '../scripts/keyboard';
 
 const MainCreate = async function CreatePage() {
   const { body } = document;
@@ -16,39 +17,22 @@ const MainCreate = async function CreatePage() {
   keyboard.append(keyboardWrapper);
   body.append(main);
   const mas = [];
+  const objKeyboard = new Keyboard('eng', false, textArea);
   async function showButtons(obj) {
     await obj.then((result) => result.map((e) => {
       const line = CreateBlock('div', 'keyboard__buttons_line');
       e.map((elem) => {
         mas.push(elem);
-        return line.append(elem.CreateButton());
+        return line.append(elem.CreateButton(objKeyboard.lang, objKeyboard.shift));
       });
       return keyboard.append(line);
     }));
   }
-  await showButtons(createData());
+  await showButtons(createData(objKeyboard.lang, objKeyboard.shift));
+  objKeyboard.SetupButtons(mas);
+  objKeyboard.SetupEventListeners();
+  console.log(objKeyboard);
   textArea.focus();
-  document.addEventListener('keydown', (e) => {
-    textArea.blur();
-    mas.map((button) => {
-      if (button.buttonCode === e.code) {
-        button.DispatchEvent();
-        return console.log(e.code);
-      }
-      return 0;
-    });
-  });
-
-  document.addEventListener('keyup', (e) => {
-    textArea.focus();
-    mas.map((button) => {
-      if (button.buttonCode === e.code) {
-        button.EndEvent();
-        return console.log(e.code);
-      }
-      return 0;
-    });
-  });
 };
 
 export default MainCreate;

@@ -25,6 +25,7 @@ button{
         height: 63px;
         width: 78px;
         background-color: #2E2E2E;
+        cursor: pointer;
         &--active{
             background-color: green;
         }
@@ -42,6 +43,11 @@ button{
         }
         &--backspace {
             width: 114px;
+        }
+        &--hidden {
+            width: 63px;
+            opacity: 0;
+            cursor: default;
         }
 
         .text{
