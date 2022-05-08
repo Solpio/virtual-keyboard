@@ -5,6 +5,10 @@ class Keyboard {
     this.area = area;
   }
 
+  SaveLang() {
+    window.localStorage.setItem('language', this.lang);
+  }
+
   SwithLang() {
     if (this.lang === 'ru') {
       this.lang = 'eng';
