@@ -17,7 +17,8 @@ const MainCreate = async function CreatePage() {
   keyboard.append(keyboardWrapper);
   body.append(main);
   const mas = [];
-  const objKeyboard = new Keyboard('eng', false, textArea);
+  const savedLanguage = window.localStorage.getItem('keyboard-language');
+  const objKeyboard = savedLanguage ? new Keyboard(savedLanguage, false, textArea) : new Keyboard('eng', false, textArea);
   async function showButtons(obj) {
     await obj.then((result) => result.map((e) => {
       const line = CreateBlock('div', 'keyboard__buttons_line');

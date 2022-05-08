@@ -6,7 +6,7 @@ class Keyboard {
   }
 
   SaveLang() {
-    window.localStorage.setItem('language', this.lang);
+    window.localStorage.setItem('keyboard-language', this.lang);
   }
 
   SwithLang() {
@@ -16,6 +16,7 @@ class Keyboard {
       this.lang = 'ru';
     }
     this.UpdateButtons();
+    this.SaveLang();
   }
 
   SwithShift() {
