@@ -4,10 +4,9 @@ class Button {
   constructor(btn) {
     this.buttonCode = btn.code;
     this.button = btn;
-    this.symbol = this.button.lang.eng.shift.off;
   }
 
-  CreateButton() {
+  CreateButton(lang, shift) {
     function createButtonBlock(code) {
       const block = CreateBlock('button', 'keyboard__button');
       if (code === 'ShiftLeft') {
@@ -40,13 +39,36 @@ class Button {
       return block;
     }
     this.block = createButtonBlock(this.buttonCode);
-    this.SetSymbol();
-    this.SetEventListener();
+    this.CreateEvent  ();
+    this.SetSymbol(lang, shift);
+    this.AppendSymbol();
+    // this.SetEventListener();
     return this.block;
   }
 
-  SetSymbol() {
+  SetSymbol(lang, shift) {
+    if (lang === 'eng') {
+      if (shift) {
+        this.symbol = this.button.lang.eng.shift.on;
+      } else {
+        this.symbol = this.button.lang.eng.shift.off;
+      }
+    } else if (lang === 'ru') {
+      if (shift) {
+        this.symbol = this.button.lang.ru.shift.on;
+      } else {
+        this.symbol = this.button.lang.ru.shift.off;
+      }
+    }
+  }
+
+  UpdateSymbol() {
+    this.span.textContent = this.symbol;
+  }
+
+  AppendSymbol() {
     const span = CreateBlock('span', 'text');
+    this.span = span;
     span.textContent = this.symbol;
     this.block.append(span);
   }
@@ -62,33 +84,6 @@ class Button {
     }
     this.event = CreateEvent(this.buttonCode);
     return this.event;
-  }
-
-  SetEventListener() {
-    this.CreateEvent();
-    this.block.addEventListener('buttonpressed', () => {
-      this.block.classList.add('keyboard__button--active');
-
-      if (this.button.special) {
-        if (this.buttonCode === 'Backspace') {
-          document.querySelector('.area').value = document.querySelector('.area').value.slice(0, -1); // FIX QUERY SELECTOR;
-        }
-        if (this.buttonCode === 'Tab') {
-          document.querySelector('.area').value += ' '; // FIX QUERY SELECTOR;
-        }
-        if (this.buttonCode === 'Enter') {
-          document.querySelector('.area').value += '\n'; // FIX QUERY SELECTOR;
-        }
-      } else {
-        document.querySelector('.area').value += this.symbol; // FIX QUERY SELECTOR;
-      }
-    });
-    this.block.addEventListener('mousedown', () => {
-      this.block.dispatchEvent(this.event);
-    });
-    this.block.addEventListener('mouseup', () => {
-      this.block.classList.remove('keyboard__button--active');
-    });
   }
 
   DispatchEvent() {
