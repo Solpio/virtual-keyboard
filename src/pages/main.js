@@ -31,7 +31,6 @@ const MainCreate = async function CreatePage() {
   await showButtons(createData(objKeyboard.lang, objKeyboard.shift));
   objKeyboard.SetupButtons(mas);
   objKeyboard.SetupEventListeners();
-  console.log(objKeyboard);
   textArea.focus();
 };
 

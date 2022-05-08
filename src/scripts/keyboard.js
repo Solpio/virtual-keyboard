@@ -42,7 +42,6 @@ class Keyboard {
   }
 
   UpdateButtons() {
-    console.log(this.shift);
     this.buttons.map((btn) => {
       btn.SetSymbol(this.lang, this.shift);
       btn.UpdateSymbol();
@@ -51,7 +50,6 @@ class Keyboard {
   }
 
   SetupEventListeners() {
-    console.log(this.buttons);
     this.buttons.map((key) => {
       key.block.addEventListener('buttonpressed', () => {
         key.block.classList.add('keyboard__button--active');
@@ -79,7 +77,6 @@ class Keyboard {
           }
         } else {
           this.area.value += key.symbol;
-          console.log(key);
         }
       });
       key.block.addEventListener('mousedown', () => {
@@ -99,7 +96,7 @@ class Keyboard {
       this.buttons.map((button) => {
         if (button.buttonCode === e.code) {
           button.DispatchEvent();
-          return console.log(e.code);
+          return 0
         }
         return 0;
       });
@@ -115,7 +112,7 @@ class Keyboard {
           ) {
             this.DisableShift();
           }
-          return console.log(e.code);
+          return 0
         }
         return 0;
       });
