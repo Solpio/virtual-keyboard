@@ -1,0 +1,52 @@
+button{
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.keyboard{
+    padding: 60px 41px 115px 33px;
+    background-color: #1A1A1A;
+    // &__wrapper{
+        
+    // }
+
+    &__buttons_line{
+        display: flex;
+        // flex-direction: column;
+        gap: 0 6px;
+        margin-top: 7px;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 63px;
+        width: 78px;
+        background-color: #2E2E2E;
+        &--active{
+            background-color: green;
+        }
+        &--caps {
+            width: 119px;
+        }
+        &--shift{
+            width: 157px;
+        }
+        &--space {
+            width: 576px;
+        }
+        &--arrow {
+            width: 63px;
+        }
+        &--backspace {
+            width: 114px;
+        }
+
+        .text{
+            display: block;
+            color: #ffffff;
+        }
+    }
+}
