@@ -84,7 +84,9 @@ class Keyboard {
       });
       key.block.addEventListener('mouseup', () => {
         key.block.classList.remove('keyboard__button--active');
-        if (key.buttonCode !== 'ShiftLeft' && key.buttonCode !== 'ShiftRight' && key.buttonCode !== 'CapsLock') {
+        if (
+          key.buttonCode !== 'ShiftLeft' && key.buttonCode !== 'ShiftRight' && key.buttonCode !== 'CapsLock'
+        ) {
           this.DisableShift();
         }
       });
@@ -96,7 +98,7 @@ class Keyboard {
       this.buttons.map((button) => {
         if (button.buttonCode === e.code) {
           button.DispatchEvent();
-          return 0
+          return 0;
         }
         return 0;
       });
@@ -112,7 +114,7 @@ class Keyboard {
           ) {
             this.DisableShift();
           }
-          return 0
+          return 0;
         }
         return 0;
       });
