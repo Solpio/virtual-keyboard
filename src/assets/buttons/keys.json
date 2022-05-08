@@ -352,7 +352,7 @@
       "code": "KeyD",
       "lang": {
         "ru": {
-          "shift": { "on": "В", "off": "В" }
+          "shift": { "on": "В", "off": "в" }
         },
         "eng": {
           "shift": { "on": "D", "off": "d" }
@@ -374,7 +374,7 @@
       "code": "KeyG",
       "lang": {
         "ru": {
-          "shift": { "on": "П", "off": "П" }
+          "shift": { "on": "П", "off": "п" }
         },
         "eng": {
           "shift": { "on": "G", "off": "g" }
@@ -500,7 +500,7 @@
       "code": "KeyX",
       "lang": {
         "ru": {
-          "shift": { "on": "Ч", "off": "Ч" }
+          "shift": { "on": "Ч", "off": "ч" }
         },
         "eng": {
           "shift": { "on": "X", "off": "x" }
@@ -525,7 +525,7 @@
           "shift": { "on": "М", "off": "м" }
         },
         "eng": {
-          "shift": { "on": "V", "off": "V" }
+          "shift": { "on": "V", "off": "v" }
         }
       }
     },
@@ -596,13 +596,24 @@
       }
     },
     {
+      "code": "Nothing",
+      "lang": {
+        "ru": {
+          "shift": { "on": "", "off": "" }
+        },
+        "eng": {
+          "shift": { "on": "", "off": "" }
+        }
+      }
+    },
+    {
       "code": "ArrowUp",
       "lang": {
         "ru": {
-          "shift": { "on": "Up", "off": "Up" }
+          "shift": { "on": "↑", "off": "↑" }
         },
         "eng": {
-          "shift": { "on": "Up", "off": "Up" }
+          "shift": { "on": "↑", "off": "↑" }
         }
       }
     }
@@ -684,10 +695,10 @@
       "code": "ArrowLeft",
       "lang": {
         "ru": {
-          "shift": { "on": "left", "off": "left" }
+          "shift": { "on": "←", "off": "←" }
         },
         "eng": {
-          "shift": { "on": "left", "off": "left" }
+          "shift": { "on": "←", "off": "←" }
         }
       }
     },
@@ -695,10 +706,10 @@
       "code": "ArrowDown",
       "lang": {
         "ru": {
-          "shift": { "on": "down", "off": "down" }
+          "shift": { "on": "↓", "off": "↓" }
         },
         "eng": {
-          "shift": { "on": "down", "off": "down" }
+          "shift": { "on": "↓", "off": "↓" }
         }
       }
     },
@@ -706,10 +717,10 @@
       "code": "ArrowRight",
       "lang": {
         "ru": {
-          "shift": { "on": "right", "off": "right" }
+          "shift": { "on": "→", "off": "→" }
         },
         "eng": {
-          "shift": { "on": "right", "off": "right" }
+          "shift": { "on": "→", "off": "→" }
         }
       }
     }
